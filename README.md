@@ -2,7 +2,7 @@
 - 👀 I’m interested in Competitive Programming
 - 🌱 I’m currently learning CP in C++
 - 💞️ I’m looking to collaborate on Competitive Programming Team
-- 📫 You can reach me on instagram @f.ryan.s
+- 📫 You can reach me on instagram @f.ryan.7
 - ⚡ Fun fact: plays dota :)
 
 <!---
