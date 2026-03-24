@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ryan Portfolio</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%23030712'/><text x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-family='monospace' font-weight='bold' font-size='13' fill='%2338bdf8'>R</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+
+<canvas id="neural-canvas"></canvas>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo"><span>Frederick</span>Ryan<span>Suryadi</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#awards">Awards</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact" class="nav-cta">Contact</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-tag">Intelligence Systems · Competitive Programmer · AI Developer</div>
+  <div class="hero-avatar">
+    <img src="assets/pp.png" alt="Frederick Ryan Suryadi">
+  </div>
+  <h1 class="hero-name glitch" data-text="Frederick Ryan">
+    Frederick<br>
+    <span class="line2">Ryan</span>
+  </h1>
+  <p class="hero-role">Code &amp; Intelligence System Enthusiast</p>
+  <div class="typewriter-wrap">
+    <span class="prompt">~/C $</span>
+    <span id="typewriter"></span>
+  </div>
+  <p class="hero-bio">
+    Building intelligent systems at the intersection of deep learning, distributed computing, and human-centered design. Passionate about creating technology that thinks, adapts, and empowers.
+  </p>
+  <div class="hero-actions">
+    <a href="#contact" class="btn-primary">Get in Touch</a>
+    <a href="#projects" class="btn-outline">View Work</a>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-tag">Portfolio</div>
+      <h2 class="section-title">Projects</h2>
+    </div>
+    <div class="projects-grid">
+      <div class="project-card reveal">
+        <div class="project-thumb" id="thumb1"></div>
+        <div class="project-body">
+          <div class="project-type">Deep Learning · NLP</div>
+          <div class="project-title">Gen-Z Slang to Standard English</div>
+          <div class="project-desc">
+            NLP style-transfer project that translates Gen-Z slang into standard English using paired sentence dataset. 
+            Built for informal language understanding, text normalization, and conversational AI preprocessing.
+          </div>
+          <div class="project-links">
+            <a href="#" class="proj-link">Live Demo</a>
+            <a href="https://github.com/FrederickRyan/Gen-Z-Slang-to-Standard-English" class="proj-link">GitHub</a>
+            <a href="#" class="proj-link">Paper</a>
+          </div>
+        </div>
+      </div>
+      <div class="project-card reveal">
+        <div class="project-thumb" id="thumb2"></div>
+        <div class="project-body">
+          <div class="project-type">Computer Vision · OCR</div>
+            <div class="project-title">Indonesian ALPR & Vehicle Tax Inquiry</div>
+            <div class="project-desc">
+              Automatic License Plate Recognition system for Indonesian vehicles using computer vision and OCR. 
+              Detects license plates from images and integrates vehicle tax inquiry for real-time information lookup.
+            </div>
+          <div class="project-links">
+            <a href="#" class="proj-link">Case Study</a>
+            <a href="https://github.com/FrederickRyan/Indonesian-ALPR-and-Vehicle-Tax-Inquiry" class="proj-link">GitHub</a>
+          </div>
+        </div>
+      </div>
+      <div class="project-card reveal">
+        <div class="project-thumb" id="thumb3"></div>
+        <div class="project-body">
+          <div class="project-type">Machine Learning · Classification · Data Mining</div>
+          <div class="project-title">Hypnos - Sleep Lifestyle Prediction Model</div>
+          <div class="project-desc">
+            Built a classification model to uncover predictive patterns in sleep, health, and lifestyle data. 
+            Implemented Logistic Regression, Support Vector Machine, Decision Tree, and Random Forest with feature importance analysis 
+            to identify key factors affecting health outcomes.
+          </div>
+          <div class="project-links">
+            <a href="#" class="proj-link">Docs</a>
+            <a href="https://github.com/FrederickRyan/Hypnos-Uncovering-Predictive-Patterns-in-Sleep-Lifestyle-Data-Using-Classification-Model" class="proj-link">GitHub</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-tag">History</div>
+      <h2 class="section-title">Experience</h2>
+    </div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-meta">
+          <span class="timeline-date">2024 — 2025</span>
+        </div>
+        <div class="timeline-role">BNCC Bootcamp Instructor</div>
+        <div class="timeline-company">C Programming Bootcamp, Bina Nusantara Computer Club</div>
+        <div class="timeline-desc">
+          Taught C programming fundamentals including data structures, pointers, memory management, and algorithmic problem solving. Guided students through competitive programming exercises and helped improve logical thinking and coding efficiency.
+        </div>
+        <div class="timeline-chips">
+          <span class="chip">C</span>
+          <span class="chip">Data Structures</span>
+          <span class="chip">Algorithms</span>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-meta">
+          <span class="timeline-date">2024 — 2026</span>
+        </div>
+        <div class="timeline-role">Competitive Programming Member</div>
+        <div class="timeline-company">BINUS Competitive Programming Club — Team Jollybee</div>
+        <div class="timeline-desc">
+          Active member of Team Jollybee participating in competitive programming training and contests. Focused on advanced algorithms, data structures, and optimization techniques for solving complex problems under time constraints.
+        </div>
+        <div class="timeline-chips">
+          <span class="chip">C++</span>
+          <span class="chip">Algorithms</span>
+          <span class="chip">Data Structures</span>
+          <span class="chip">Competitive Programming</span>
+          <span class="chip">Problem Solving</span>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-meta">
+          <span class="timeline-date">2024 — 2026</span>
+        </div>
+        <div class="timeline-role">Student Mentor</div>
+        <div class="timeline-company">Student Advisory Service Center (SASC), BINUS University</div>
+        <div class="timeline-desc">
+          Mentored students on academic planning, study strategies, and university adaptation. Provided guidance on coursework, time management, and career preparation while supporting student development through regular consultations.
+        </div>
+        <div class="timeline-chips">
+          <span class="chip">Mentoring</span>
+          <span class="chip">Academic Advising</span>
+          <span class="chip">Leadership</span>
+          <span class="chip">Communication</span>
+          <span class="chip">Student Support</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-tag">Capabilities</div>
+      <h2 class="section-title">Skills &amp; Expertise</h2>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card reveal">
+        <div class="skill-icon">🧠</div>
+        <div class="skill-name">Machine Learning</div>
+        <div class="skill-desc">
+          Designing and training models from classical ML to large-scale transformer architectures for real-world applications.
+        </div>
+        <div class="skill-tags">
+          <span class="skill-tag">PyTorch</span>
+          <span class="skill-tag">TensorFlow</span>
+          <span class="skill-tag">Hugging Face</span>
+          <span class="skill-tag">Scikit-learn</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-icon">🔬</div>
+        <div class="skill-name">AI Research</div>
+        <div class="skill-desc">
+          Conducting original research in NLP and computer vision.
+        </div>
+        <div class="skill-tags">
+          <span class="skill-tag">NLP</span>
+          <span class="skill-tag">Computer Vision</span>
+          <span class="skill-tag">Deep Learning</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-icon">🏆</div>
+        <div class="skill-name">Competitive Programming</div>
+        <div class="skill-desc">
+          Solving complex algorithmic problems with optimized time and space complexity.
+        </div>
+        <div class="skill-tags">
+          <span class="skill-tag">C++</span>
+          <span class="skill-tag">Algorithms</span>
+          <span class="skill-tag">Data Structures</span>
+          <span class="skill-tag">Problem Solving</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-icon">☁️</div>
+        <div class="skill-name">Cloud Engineering</div>
+        <div class="skill-desc">
+          Designing, deploying, and managing scalable cloud infrastructure and AI workloads.
+        </div>
+        <div class="skill-tags">
+          <span class="skill-tag">Alibaba Cloud</span>
+          <span class="skill-tag">Docker</span>
+          <span class="skill-tag">Kubernetes</span>
+          <span class="skill-tag">CI/CD</span>
+        </div>
+      </div>
+
+      <div class="skill-card reveal">
+        <div class="skill-icon">⛏️</div>
+        <div class="skill-name">Data Mining</div>
+        <div class="skill-desc">
+          Extracting insights from large datasets using statistical analysis, pattern discovery, and predictive modeling.
+        </div>
+        <div class="skill-tags">
+          <span class="skill-tag">Pandas</span>
+          <span class="skill-tag">NumPy</span>
+          <span class="skill-tag">Scikit-learn</span>
+          <span class="skill-tag">EDA</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+      <div class="skill-icon">🗄️</div>
+      <div class="skill-name">Database</div>
+      <div class="skill-desc">
+        Designing, querying, and optimizing relational and NoSQL databases for scalable applications.
+      </div>
+      <div class="skill-tags">
+        <span class="skill-tag">MySQL</span>
+        <span class="skill-tag">SSMS</span>
+        <span class="skill-tag">SQL</span>
+        <span class="skill-tag">Database Design</span>
+      </div>
+    </div>
+    </div>
+    
+    <!-- <div class="skill-bar-section reveal">
+      <h3>// Core Proficiencies</h3>
+      <div id="skill-bars"></div>
+    </div> -->
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- AWARDS & CERTIFICATION -->
+<section id="awards">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-tag">Recognition</div>
+      <h2 class="section-title">Awards &amp; Certifications</h2>
+    </div>
+    <div class="awards-grid">
+      <div class="award-card reveal">
+        <div class="award-icon">
+          <img class="award-logo" src="assets/icpc_foundation.svg" alt="ICPC">
+        </div>
+        <div>
+          <div class="award-title">ICPC INC Asia Jakarta Bronze Medalist</div>
+          <div class="award-org">International Collegiate Programming Contest (ICPC) 2024</div>
+          <div class="award-year">Awarded Bronze Medal for competitive programming performance in ICPC Asia Jakarta - Indonesia National Contest</div>
+          <button class="view-btn" onclick="openView('assets/2025_ICPC_Asia_Jakarta_Indonesia_NC_Frederick_Ryan_Suryadi_MEDAL.pdf')">View Certificate</button>
+        </div>
+      </div>
+      <div class="award-card reveal">
+        <div class="award-icon">
+          <img class="award-logo" src="assets/icpc_foundation.svg" alt="ICPC">
+        </div>
+        <div>
+          <div class="award-title">37th Place - ICPC Asia Jakarta Regional Contest</div>
+          <div class="award-org">International Collegiate Programming Contest (ICPC) 2024</div>
+          <div class="award-year">Ranked 37th in the Asia Jakarta onsite regional competitive programming contest</div>
+          <button class="view-btn" onclick="openView('assets/2025_ICPC_Asia_Jakarta_RC_PLACE.pdf')">View Certificate</button>
+        </div>
+      </div>
+      <div class="award-card reveal">
+        <div class="award-icon">
+          <img class="award-logo" src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/alibabacloud.svg" alt="Alibaba Cloud">
+        </div>
+        <div>
+            <div class="award-title">Alibaba Cloud Certified Associate — Cloud Engineer</div>
+            <div class="award-org">Alibaba Cloud Certification</div>
+            <div class="award-year">Frederick Ryan Suryadi — Successfully completed Alibaba Cloud certification requirements</div>
+          <button class="view-btn" onclick="openView('assets/Alibaba_certificate.pdf')">View Certificate</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-tag">Academic Background</div>
+      <h2 class="section-title">Education</h2>
+    </div>
+    <div class="edu-grid">
+      <div class="edu-card reveal">
+        <div class="edu-badge">Visiting Student Program</div>
+        <div class="edu-degree">Informatics and Business</div>
+        <div class="edu-school">Korea University</div>
+        <div class="edu-detail">Visiting Student, Korea University — Deep Learning and Business Analytics.</div>
+        <div class="edu-year">2026-present</div>
+      </div>
+      <div class="edu-card reveal">
+        <div class="edu-badge">Undergraduate</div>
+        <div class="edu-degree">Computer Science</div>
+        <div class="edu-school">BINUS (Bina Nusantara)</div>
+        <div class="edu-detail">Computer Science, BINUS University — Specialization in Intelligent Systems (Machine Learning, NLP, Computer Vision).</div>
+        <div class="edu-year">2023-present</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-tag">Let's Connect</div>
+      <h2 class="section-title">Get in Touch</h2>
+    </div>
+    <div class="contact-inner">
+      <div class="reveal">
+        <p class="contact-lead">
+          Open to internship and full-time. I reply to every message within 48 hours.
+        </p>
+        <div class="contact-links">
+            <div class="contact-link-info">
+              <div class="contact-link-label">Email</div>
+              <div class="contact-link-value"><span class="__cf_email__" data-cfemail="2f4e434a576f4a574e425f434a014c4042">[frederickryan05@gmail.com]</span></div>
+            </div>
+          </a>
+          <a href="https://www.linkedin.com/in/frederick-ryan-suryadi-8b9275357/" class="contact-link" target="_blank">
+            <div class="contact-link-icon">
+              <img class="social-logo" src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/linkedin.svg" alt="LinkedIn">
+            </div>
+            <div class="contact-link-info">
+              <div class="contact-link-label">LinkedIn</div>
+              <div class="contact-link-value">linkedin.com/in/frederickryan</div>
+            </div>
+          </a>
+          <a href="https://github.com/FrederickRyan" class="contact-link" target="_blank">
+            <div class="contact-link-icon">
+              <img class="social-logo" src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/github.svg" alt="GitHub">
+            </div>
+            <div class="contact-link-info">
+              <div class="contact-link-label">GitHub</div>
+              <div class="contact-link-value">github.com/frederickryan</div>
+            </div>
+          </a>
+          <a href="https://www.facebook.com/FryingP4n/" class="contact-link" target="_blank">
+            <div class="contact-link-icon">
+              <img class="social-logo" src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/facebook.svg" alt="Facebook">
+            </div>
+            <div class="contact-link-info">
+              <div class="contact-link-label">Facebook</div>
+              <div class="contact-link-value">fb.com/frederickryan</div>
+            </div>
+          </a>
+          <a href="#" class="contact-link" download>
+            <div class="contact-link-icon">📄</div>
+            <div class="contact-link-info">
+              <div class="contact-link-label">Curriculum Vitae</div>
+              <div class="contact-link-value">Download CV — PDF</div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="reveal">
+        <form class="contact-form" action="https://formspree.io/f/meerbdkb" method="POST" onsubmit="handleSubmit(event)">
+          <div class="form-group">
+            <label class="form-label">Name</label>
+            <input type="text" name="name" class="form-input" placeholder="Your name" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email</label>
+            <input type="email" name="email" class="form-input" placeholder="you@email.com" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Subject</label>
+            <input type="text" name="subject" class="form-input" placeholder="Collaboration / Opportunity / Question">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Message</label>
+            <textarea class="form-textarea" name="message" placeholder="What's on your mind?"></textarea>
+          </div>
+          <button type="submit" class="btn-primary" id="submit-btn" style="border:none;cursor:pointer;">Send Message →</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-copy">© 2026 Frederick Ryan Suryadi</div>
+  <div class="footer-socials">
+    <a href="https://github.com/FrederickRyan" class="footer-social" title="GitHub" target="_blank">
+      <img class="social-logo" src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/github.svg" alt="GitHub">
+    </a>
+    <a href="https://www.facebook.com/FryingP4n/" class="footer-social" title="Facebook" target="_blank">
+      <img class="social-logo" src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/facebook.svg" alt="Facebook">
+    </a>
+    <a href="https://www.linkedin.com/in/frederick-ryan-suryadi-8b9275357/" class="footer-social" title="LinkedIn" target="_blank">
+      <img class="social-logo" src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/linkedin.svg" alt="LinkedIn">
+    </a>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
