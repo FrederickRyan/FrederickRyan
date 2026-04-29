@@ -286,6 +286,66 @@ function drawThumb(id, color1, color2, type) {
     x.strokeStyle = `rgba(${color2},0.9)`; x.lineWidth = 2;
     x.beginPath(); x.moveTo(ex - 4, ey - 4); x.lineTo(ex + 4, ey + 4); x.stroke();
     x.beginPath(); x.moveTo(ex + 4, ey - 4); x.lineTo(ex - 4, ey + 4); x.stroke();
+  } else if (type === 'charity') {
+    // TangCare — hyperlocal map with donor pins
+    x.fillStyle = '#0d1424'; x.fillRect(0, 0, c.width, c.height);
+
+    // Faint map grid tiles
+    for (let i = 0; i < c.width; i += 32) {
+      x.beginPath(); x.moveTo(i, 0); x.lineTo(i, c.height);
+      x.strokeStyle = `rgba(${color1},0.05)`; x.lineWidth = 1; x.stroke();
+    }
+    for (let i = 0; i < c.height; i += 32) {
+      x.beginPath(); x.moveTo(0, i); x.lineTo(c.width, i);
+      x.strokeStyle = `rgba(${color1},0.05)`; x.lineWidth = 1; x.stroke();
+    }
+
+    // Faint road lines
+    const roads = [
+      [0, 55, c.width, 80], [0, 110, c.width, 95],
+      [120, 0, 110, c.height], [280, 0, 260, c.height]
+    ];
+    roads.forEach(([x1,y1,x2,y2]) => {
+      x.beginPath(); x.moveTo(x1,y1); x.lineTo(x2,y2);
+      x.strokeStyle = `rgba(${color1},0.08)`; x.lineWidth = 6; x.stroke();
+    });
+
+    // Pulse rings + pins
+    const pins = [
+      {px: 110, py: 75,  main: true},
+      {px: 260, py: 95,  main: false},
+      {px: 180, py: 130, main: false},
+      {px: 340, py: 55,  main: false},
+    ];
+    pins.forEach(({px, py, main}) => {
+      // Pulse ring
+      x.beginPath(); x.arc(px, py, main ? 22 : 14, 0, Math.PI * 2);
+      x.strokeStyle = `rgba(${color1},${main ? 0.2 : 0.1})`; x.lineWidth = 1; x.stroke();
+      x.beginPath(); x.arc(px, py, main ? 14 : 8, 0, Math.PI * 2);
+      x.strokeStyle = `rgba(${color1},${main ? 0.35 : 0.2})`; x.lineWidth = 1; x.stroke();
+
+      // Pin body (teardrop)
+      x.beginPath();
+      x.arc(px, py - 4, main ? 7 : 5, 0, Math.PI * 2);
+      x.fillStyle = `rgba(${color1},${main ? 1 : 0.6})`; x.fill();
+      x.beginPath();
+      x.moveTo(px - (main?4:3), py - 2);
+      x.lineTo(px, py + (main?10:7));
+      x.lineTo(px + (main?4:3), py - 2);
+      x.fillStyle = `rgba(${color1},${main ? 1 : 0.6})`; x.fill();
+
+      // Dot inside pin
+      x.beginPath(); x.arc(px, py - 4, main ? 2.5 : 2, 0, Math.PI * 2);
+      x.fillStyle = '#0d1424'; x.fill();
+    });
+
+    // Connecting dashed lines between pins
+    [[pins[0], pins[1]], [pins[1], pins[2]], [pins[0], pins[3]]].forEach(([a,b]) => {
+      x.setLineDash([3, 5]);
+      x.beginPath(); x.moveTo(a.px, a.py); x.lineTo(b.px, b.py);
+      x.strokeStyle = `rgba(${color1},0.2)`; x.lineWidth = 1; x.stroke();
+      x.setLineDash([]);
+    });
   }
 }
 
@@ -296,6 +356,7 @@ setTimeout(() => {
   drawThumb('thumb4', '52,211,153',  '129,140,248', 'path');
   drawThumb('thumb5', '248,113,113', '251,191,36',  'vinyl');
   drawThumb('thumb6', '251,191,36',  '248,113,113', 'dungeon');
+  drawThumb('thumb7', '251,146,60', '52,211,153', 'charity');
 }, 100);
 
 // Hamburger 
