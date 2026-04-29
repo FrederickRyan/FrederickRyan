@@ -286,6 +286,7 @@ function drawThumb(id, color1, color2, type) {
     x.strokeStyle = `rgba(${color2},0.9)`; x.lineWidth = 2;
     x.beginPath(); x.moveTo(ex - 4, ey - 4); x.lineTo(ex + 4, ey + 4); x.stroke();
     x.beginPath(); x.moveTo(ex + 4, ey - 4); x.lineTo(ex - 4, ey + 4); x.stroke();
+
   } else if (type === 'charity') {
     // TangCare — hyperlocal map with donor pins
     x.fillStyle = '#0d1424'; x.fillRect(0, 0, c.width, c.height);
@@ -349,7 +350,7 @@ function drawThumb(id, color1, color2, type) {
   }
 }
 
-setTimeout(() => {
+window.onload = () => {
   drawThumb('thumb1', '56,189,248',  '129,140,248', 'neural');
   drawThumb('thumb2', '52,211,153',  '56,189,248',  'grid');
   drawThumb('thumb3', '129,140,248', '56,189,248',  'bars');
@@ -357,7 +358,7 @@ setTimeout(() => {
   drawThumb('thumb5', '248,113,113', '251,191,36',  'vinyl');
   drawThumb('thumb6', '251,191,36',  '248,113,113', 'dungeon');
   drawThumb('thumb7', '251,146,60', '52,211,153', 'charity');
-}, 100);
+};
 
 // Hamburger 
 const ham = document.getElementById('hamburger');
