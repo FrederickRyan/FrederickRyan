@@ -193,7 +193,7 @@ function drawThumb(id, color1, color2, type) {
       i===0?x.moveTo(i,y):x.lineTo(i,y);
     }
     x.strokeStyle=`rgba(${color1},0.7)`; x.lineWidth=2; x.stroke();
-  } else {
+  } else if (type==='bars') {
     x.fillStyle='#0d1424'; x.fillRect(0,0,c.width,c.height);
     // Bars
     const bars = [60,85,45,90,70,55,80];
@@ -206,13 +206,96 @@ function drawThumb(id, color1, color2, type) {
       x.fillStyle=grad;
       x.fillRect(bx,by,bw,h*0.7);
     });
+  } else if (type === 'path') {
+    // OpenPath — connected node map
+    x.fillStyle = '#0d1424'; x.fillRect(0, 0, c.width, c.height);
+    const nodes = [
+      {x: 60,  y: 80},  {x: 150, y: 40},  {x: 150, y: 120},
+      {x: 260, y: 60},  {x: 260, y: 100}, {x: 370, y: 80}
+    ];
+    const edges = [[0,1],[0,2],[1,3],[2,4],[3,5],[4,5]];
+    edges.forEach(([a,b]) => {
+      const cx = (nodes[a].x + nodes[b].x) / 2;
+      const cy = (nodes[a].y + nodes[b].y) / 2 - 20;
+      x.beginPath();
+      x.moveTo(nodes[a].x, nodes[a].y);
+      x.quadraticCurveTo(cx, cy, nodes[b].x, nodes[b].y);
+      x.strokeStyle = `rgba(${color1},0.3)`; x.lineWidth = 1.5; x.stroke();
+    });
+    nodes.forEach((n, i) => {
+      x.beginPath(); x.arc(n.x, n.y, i === 0 || i === 5 ? 8 : 5, 0, Math.PI * 2);
+      x.fillStyle = i === 0 || i === 5
+        ? `rgba(${color1},1)` : `rgba(${color1},0.5)`;
+      x.fill();
+      if (i === 0 || i === 5) {
+        x.beginPath(); x.arc(n.x, n.y, 13, 0, Math.PI * 2);
+        x.strokeStyle = `rgba(${color1},0.2)`; x.lineWidth = 1.5; x.stroke();
+      }
+    });
+
+  } else if (type === 'vinyl') {
+    // Willify — vinyl record + equalizer bars
+    x.fillStyle = '#0d1424'; x.fillRect(0, 0, c.width, c.height);
+    const cx2 = 100, cy2 = c.height / 2, r = 55;
+    for (let ring = r; ring > 10; ring -= 6) {
+      x.beginPath(); x.arc(cx2, cy2, ring, 0, Math.PI * 2);
+      x.strokeStyle = `rgba(${color1},${ring === r ? 0.4 : 0.07})`; x.lineWidth = 1; x.stroke();
+    }
+    x.beginPath(); x.arc(cx2, cy2, 10, 0, Math.PI * 2);
+    x.fillStyle = `rgba(${color1},0.9)`; x.fill();
+    x.beginPath(); x.arc(cx2, cy2, 4, 0, Math.PI * 2);
+    x.fillStyle = '#0d1424'; x.fill();
+    // Equalizer bars
+    const heights = [30, 55, 40, 70, 50, 35, 60, 45];
+    heights.forEach((h, i) => {
+      const bx = 190 + i * 22, bw = 12;
+      const grad = x.createLinearGradient(bx, cy2 - h, bx, cy2 + h);
+      grad.addColorStop(0, `rgba(${color1},0.9)`);
+      grad.addColorStop(1, `rgba(${color2},0.2)`);
+      x.fillStyle = grad;
+      x.fillRect(bx, cy2 - h, bw, h * 2);
+    });
+
+  } else if (type === 'dungeon') {
+    // Slay The Spores — dungeon grid map
+    x.fillStyle = '#0d1424'; x.fillRect(0, 0, c.width, c.height);
+    const rooms = [
+      {x: 1, y: 1, w: 3, h: 2},
+      {x: 5, y: 0, w: 2, h: 2},
+      {x: 5, y: 3, w: 2, h: 2},
+      {x: 8, y: 1, w: 3, h: 3},
+      {x: 12, y: 2, w: 2, h: 2},
+    ];
+    const corridors = [
+      {x: 4, y: 1, w: 1, h: 1}, {x: 4, y: 3, w: 1, h: 1},
+      {x: 7, y: 2, w: 1, h: 1}, {x: 11, y: 2, w: 1, h: 1},
+    ];
+    const cell = 18, ox = 20, oy = 20;
+    [...corridors, ...rooms].forEach((r, i) => {
+      x.fillStyle = i < corridors.length
+        ? `rgba(${color1},0.15)` : `rgba(${color1},0.12)`;
+      x.fillRect(ox + r.x * cell, oy + r.y * cell, r.w * cell, r.h * cell);
+      x.strokeStyle = `rgba(${color1},0.4)`; x.lineWidth = 1;
+      x.strokeRect(ox + r.x * cell, oy + r.y * cell, r.w * cell, r.h * cell);
+    });
+    // Player dot in first room
+    x.beginPath(); x.arc(ox + 2.5 * cell, oy + 2 * cell, 4, 0, Math.PI * 2);
+    x.fillStyle = `rgba(${color1},1)`; x.fill();
+    // Enemy X in last room
+    const ex = ox + 13 * cell, ey = oy + 3 * cell;
+    x.strokeStyle = `rgba(${color2},0.9)`; x.lineWidth = 2;
+    x.beginPath(); x.moveTo(ex - 4, ey - 4); x.lineTo(ex + 4, ey + 4); x.stroke();
+    x.beginPath(); x.moveTo(ex + 4, ey - 4); x.lineTo(ex - 4, ey + 4); x.stroke();
   }
 }
 
 setTimeout(() => {
-  drawThumb('thumb1','56,189,248','129,140,248','neural');
-  drawThumb('thumb2','52,211,153','56,189,248','grid');
-  drawThumb('thumb3','129,140,248','56,189,248','bars');
+  drawThumb('thumb1', '56,189,248',  '129,140,248', 'neural');
+  drawThumb('thumb2', '52,211,153',  '56,189,248',  'grid');
+  drawThumb('thumb3', '129,140,248', '56,189,248',  'bars');
+  drawThumb('thumb4', '52,211,153',  '129,140,248', 'path');
+  drawThumb('thumb5', '248,113,113', '251,191,36',  'vinyl');
+  drawThumb('thumb6', '251,191,36',  '248,113,113', 'dungeon');
 }, 100);
 
 // Hamburger 
